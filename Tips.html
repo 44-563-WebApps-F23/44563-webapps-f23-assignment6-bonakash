@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tips Functions</title>
+  </head>
+
+  <body>
+    <h1>Akash Bonthu shows tip amounts</h1>
+
+    <h2>Getting input</h2>
+
+    <form>
+      <label for="form1_amount">Enter base amount </label>
+      <input type="number" id="form1_amount" name="form1_amount" value="50" />
+
+      <label for="form1_nick">Enter tip percent </label>
+      <input type="number" id="tip_percentage" name="form1_nick" value="15" />
+
+      <input type="button" onclick="tips()" value="Show tip" />
+    </form>
+
+    <p id="result">This text will be replaced</p>
+
+    <script>
+      function tips() {
+        let basePrice = document.getElementById("form1_amount").value;
+        let tipPrice = Number(document.getElementById("tip_percentage").value);
+        let myOutput = "";
+        for (let i = 0; i < 5; i++) {
+          const calculatedTip = basePrice * (tipPrice / 100);
+          myOutput += `${tipPrice}% is ${calculatedTip.toFixed(2)}; `;
+          tipPrice += 4;
+        }
+        document.getElementById("result").innerHTML = `Tips are: ${myOutput}`;
+      }
+    </script>
+  </body>
+</html>
