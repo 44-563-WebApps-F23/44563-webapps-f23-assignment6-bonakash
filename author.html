@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Akash</title>
+    </head>
+ 
+<body>
+    <h1>Author entry Akash</h1>
+
+    <form>
+        <label for="hidden_author">The hidden author name</label>
+        <input type="password" id="hidden_author" name="hidden_author" value="Dickens"> <br>
+
+        <label for="guess_author">Guess the author</label>
+        <input type="text" id="guess_author" name="guess_author" autofocus> <br><br>
+
+        <input type="button" onclick="checkAuthor()" value="Check the guess">
+    </form>
+
+    <p id="result"></p>
+    <div class="container">
+        <img
+        id="Bang"
+        src="Netherlands.jpg"
+        alt="Netherlands"
+        onclick="selectImage()"
+        width="100px"
+        height="100px"
+        />
+
+    </div>
+    <script>
+        var good = 0;
+        var oops = 0;
+        var useImage = 1;
+
+        function checkAuthor(){
+            var hiddenAuthor = document.getElementById("hidden_author").value ;
+            var author = document.getElementById("guess_author").value;
+            
+            var res_element = document.getElementById("result");
+            if(hiddenAuthor == author){
+                good ++;
+                alert("You got it right");
+            } else {
+                oops ++;
+                alert("Sorry");
+            }
+
+            
+            res_element.innerHTML = "Good: " + good + "<br> Oops: " + oops;
+        }
+    function selectImage(){
+        var imageSrc = document.getElementById("Bang");
+        switch (useImage) {
+            case 1:
+                useImage = 2;
+                imageSrc.src = "Banglore.jpg"
+                break;
+            case 2:
+                useImage = 3;
+                imageSrc.src = "Tirupati.jpg"
+                break;
+            case 3:
+                useImage = 1;
+                imageSrc.src = "Netherlands.jpg"
+                break;        
+                default:
+                break;
+                
+
+        }
+    }
+
+    </script>
+
+
+</body>
+</html> 
