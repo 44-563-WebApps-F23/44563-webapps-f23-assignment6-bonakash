@@ -21,6 +21,41 @@
 
     <p id="result">This text will be replaced</p>
 
+    <form>
+      <label for="cal-add">
+        <input
+          type="radio"
+          placeholder="cal-add"
+          name="calTips"
+          id="cal-add"
+          value="cal-add"
+          onclick="chooseOp()"
+        />
+        sum </label
+      ><label for="cal-subt">
+        <input
+          type="radio"
+          name="calTips"
+          placeholder="cal-subt"
+          id="cal-subt"
+          value="cal-subt"
+          onclick="chooseOp()"
+        />
+        difference </label
+      ><label for="cal-mult">
+        <input
+          type="radio"
+          name="calTips"
+          placeholder="product"
+          id="cal-mult"
+          value="mult"
+          onclick="chooseOp()"
+        />
+        product
+      </label>
+    </form>
+    <p id="result2"></p>
+
     <script>
       function tips() {
         let basePrice = document.getElementById("form1_amount").value;
@@ -32,6 +67,28 @@
           tipPrice += 4;
         }
         document.getElementById("result").innerHTML = `Tips are: ${myOutput}`;
+      }
+      function chooseOp() {
+        let basePrice = Number(document.getElementById("form1_amount").value);
+        let tipPrice = Number(document.getElementById("tip_percentage").value);
+        let inputAdd = document.getElementById("cal-add");
+        let inputSubt = document.getElementById("cal-subt");
+        let inputMult = document.getElementById("cal-mult");
+        let output;
+        let label;
+        if (inputAdd.checked) {
+          output = basePrice + tipPrice;
+          label = inputAdd.placeholder;
+        } else if (inputSubt.checked) {
+          output = basePrice - tipPrice;
+          label = inputSubt.placeholder;
+        } else if (inputMult.checked) {
+          label = inputMult.placeholder;
+          output = basePrice * tipPrice;
+        }
+        document.getElementById(
+          "result2"
+        ).innerHTML = `${label} of ${basePrice} and ${tipPrice} is ${output}`;
       }
     </script>
   </body>
