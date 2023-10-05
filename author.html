@@ -64,7 +64,12 @@
       <input type="text" id="guess_author" name="guess_author" autofocus />
       <br /><br />
 
-      <input type="button" onclick="checkAuthor()" value="Check the guess" />
+      <input
+        type="button"
+        onclick="checkAuthor()"
+        id="submit-button"
+        value="Check the guess"
+      />
     </form>
 
     <p id="result"></p>
@@ -95,9 +100,16 @@
           oops++;
           alert("Sorry");
         }
+        if (oops >= 7) {
+          document.getElementById("submit-button").onclick = wrongChoose;
+        }
 
         res_element.innerHTML = "Good: " + good + "<br> Oops: " + oops;
       }
+      function wrongChoose() {
+        alert("Sorry, ran out of guesses");
+      }
+
       function selectImage() {
         var imageSrc = document.getElementById("Bang");
         switch (useImage) {
